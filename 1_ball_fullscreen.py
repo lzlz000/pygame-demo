@@ -4,11 +4,12 @@ import sys
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 fps = 300
-size = width, height =  600, 400
 speed = [1,1]
 
 pygame.init()
-screen = pygame.display.set_mode(size)
+info = pygame.display.Info()
+size = width, height = info.current_w, info.current_h
+screen = pygame.display.set_mode(size,pygame.FULLSCREEN)
 pygame.display.set_caption("pygame-ball")
 font = pygame.font.Font("Microsoft Yahei Mono.ttf",100)
 ball = font.render("●", True, WHITE)
@@ -21,7 +22,9 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
-        elif event.type == pygame.KEYUP:
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                sys.exit(0)
             if event.key == pygame.K_LEFT:
                 speed[0] = 0 if speed[0]== 0 else (abs(speed[0])-1)*int(speed[0]/abs(speed[0]))
             elif event.key == pygame.K_RIGHT:

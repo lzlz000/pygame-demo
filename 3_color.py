@@ -1,5 +1,13 @@
 import pygame,sys
 
+
+class Status:
+    def __init__(self):
+        self.active = True
+
+    def change(self, status):
+        self.active = status
+
 pygame.init()
 # flag参数指定显示方式 pygame.RESIZABLE 可调节大小 pygame.NOFRAME 无边框 pygame.FULLSCREEN 全屏
 print(pygame.display.Info())
@@ -18,3 +26,6 @@ while True:
     else:
         print("icon")
     pygame.display.update()
+
+
+
